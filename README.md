@@ -1,6 +1,8 @@
 # Smart Sweep & Explain Engine 🚀
 *Blostem Builder Hackathon - Money Management Track*
 
+🔗 **Live Deployment:** [https://blostem-hackathon-smart-sweep.vercel.app/](https://blostem-hackathon-smart-sweep.vercel.app/)
+
 **Smart Sweep & Explain Engine** is an enterprise-grade Algorithmic Wealth Manager designed to democratize high-end quantitative finance. It continuously sweeps surplus cash into optimized portfolios and uses a transparent "Explain Engine" to make complex ML-driven investment decisions accessible to the everyday user.
 
 ---
