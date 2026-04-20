@@ -70,7 +70,7 @@ export default function Dashboard() {
       <nav className="border-b border-white/5 px-8 py-4 flex items-center justify-between">
         <div>
           <h1 className="text-xl font-bold">Smart Sweep & Explain Engine</h1>
-          <p className="text-xs text-gray-500 mt-0.5">Algorithmic Wealth Optimization</p>
+          <p className="text-xs text-gray-500 mt-0.5">Your AI-Powered Personal Wealth Manager</p>
         </div>
         <div className="flex gap-3">
           <Link to="/database" className="text-sm px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition text-gray-300 flex items-center gap-2">
@@ -84,7 +84,7 @@ export default function Dashboard() {
         <aside className="w-80 border-r border-white/5 p-6 space-y-6 min-h-[calc(100vh-60px)]">
           
           <div>
-            <label className="text-xs text-gray-500 font-medium block mb-1">Starting Capital</label>
+            <label className="text-xs text-gray-500 font-medium block mb-1">Current Savings</label>
             <div className="text-2xl font-bold mb-2">${netWorth.toLocaleString()}</div>
             <input type="range" min="1000" max="1000000" step="5000" value={netWorth}
               onChange={e => setNetWorth(+e.target.value)}
@@ -92,7 +92,7 @@ export default function Dashboard() {
           </div>
 
           <div>
-            <label className="text-xs text-gray-500 font-medium block mb-1">Monthly Contribution</label>
+            <label className="text-xs text-gray-500 font-medium block mb-1">Monthly Investment</label>
             <div className="text-2xl font-bold mb-2">${monthlyContrib.toLocaleString()}</div>
             <input type="range" min="0" max="25000" step="500" value={monthlyContrib}
               onChange={e => setMonthlyContrib(+e.target.value)}
@@ -109,7 +109,7 @@ export default function Dashboard() {
 
           <div>
             <div className="flex justify-between items-center mb-1">
-              <label className="text-xs text-gray-500 font-medium">Risk Score</label>
+              <label className="text-xs text-gray-500 font-medium">Risk Tolerance</label>
               <span className={`text-xs font-semibold px-2 py-0.5 rounded ${
                 ml_insights.assigned_risk_profile === 'Aggressive' ? 'bg-red-500/20 text-red-400' :
                 ml_insights.assigned_risk_profile === 'Moderate' ? 'bg-yellow-500/20 text-yellow-400' :
@@ -151,7 +151,7 @@ export default function Dashboard() {
               <p className="text-2xl font-bold text-emerald-400">{ml_insights.optimal_portfolio_return}%</p>
             </div>
             <div className="bg-white/5 rounded-xl p-5 border border-white/5">
-              <p className="text-xs text-gray-500 mb-1">Portfolio Volatility</p>
+              <p className="text-xs text-gray-500 mb-1">Risk (Volatility)</p>
               <p className="text-2xl font-bold text-orange-400">{ml_insights.optimal_portfolio_volatility}%</p>
             </div>
             <div className="bg-white/5 rounded-xl p-5 border border-white/5">
@@ -196,7 +196,7 @@ export default function Dashboard() {
             {/* Pie Chart */}
             <div className="bg-white/5 rounded-xl p-6 border border-white/5">
               <h3 className="text-sm font-semibold text-gray-400 mb-4 flex items-center gap-2">
-                <PieChartIcon className="w-4 h-4 text-emerald-500" /> Asset Allocation (MPT)
+                <PieChartIcon className="w-4 h-4 text-emerald-500" /> Recommended Smart Portfolio
               </h3>
               <div className="h-[200px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -225,7 +225,7 @@ export default function Dashboard() {
           {/* Explain Engine */}
           <div className="bg-white/5 rounded-xl p-6 border border-white/5">
             <h3 className="text-sm font-semibold text-gray-400 mb-3 flex items-center gap-2">
-              <BrainCircuit className="w-4 h-4 text-indigo-400" /> Explain Engine — Why This Allocation?
+              <BrainCircuit className="w-4 h-4 text-indigo-400" /> Explain Engine — Why did AI choose this?
             </h3>
             <p className="text-sm text-gray-300 leading-relaxed">
               {ml_insights.explanation || "Adjust the sliders to generate an AI explanation of your portfolio strategy."}

@@ -40,8 +40,8 @@ export default function Auth() {
           <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center border border-primary/30 mb-4">
              <Fingerprint className="w-8 h-8 text-primary" />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">Blostem Gateway</h1>
-          <p className="text-sm text-gray-400">Secure Quant Engine Access</p>
+          <h1 className="text-3xl font-bold text-white mb-2">Smart Sweep Engine</h1>
+          <p className="text-sm text-gray-400">AI-Powered Wealth Optimization</p>
         </div>
 
         {error && (
@@ -52,7 +52,7 @@ export default function Auth() {
 
         <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
           <div>
-            <label className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wide">Enterprise ID</label>
+            <label className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wide">Username</label>
             <input 
               type="text" 
               value={username}
@@ -63,7 +63,7 @@ export default function Auth() {
             />
           </div>
           <div>
-            <label className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wide">Passkey</label>
+            <label className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wide">Password</label>
             <input 
               type="password" 
               value={password}
@@ -74,7 +74,7 @@ export default function Auth() {
           </div>
 
           <button type="submit" className="w-full py-3 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white font-semibold rounded-lg shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all flex items-center justify-center gap-2">
-            <Shield className="w-5 h-5" /> {isLogin ? 'Authenticate' : 'Initialize Account'}
+            <Shield className="w-5 h-5" /> {isLogin ? 'Login to Dashboard' : 'Create Account'}
           </button>
         </form>
 

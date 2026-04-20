@@ -23,18 +23,20 @@
 
 ---
 
-## 🚀 How to Run the App (One-Click Setup)
+## 🚀 Live Demo & How to Test
 
-We built this project to run seamlessly for judges and mentors:
+**Live Vercel Link:** [https://blostem-hackathon-smart-sweep.vercel.app/](https://blostem-hackathon-smart-sweep.vercel.app/)
 
-1. Open this repository on your local machine.
+*⚠️ Important Note for Judges:* 
+Because our Machine Learning models and Quant Engine run natively in Python (to avoid external APIs), the backend must be running locally for the Vercel frontend to fetch data. 
+
+**Quick Start Instructions:**
+1. Download or clone this repository to your local machine.
 2. Double-click the **`run.bat`** file in the root directory.
-3. That's it! 
-    - The backend FastAPI server will spin up on port `8000`.
-    - The Vite frontend will automatically launch on port `5173`.
-4. Open your browser to: [http://localhost:5173](http://localhost:5173)
+3. The AI Backend will securely spin up on port `8000`.
+4. You can now use the live **Vercel Link** above, OR use the local dashboard at `http://localhost:5173`. 
 
-*Note: Authentication has been intentionally bypassed for hackathon demo purposes so you can jump right into the analytics dashboard.*
+*(Note: If your browser warns about "Insecure Content" on Vercel, simply allow it. This happens because the secure Vercel site is talking to your local backend.)*
 
 ---
 
