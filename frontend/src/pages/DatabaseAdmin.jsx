@@ -11,7 +11,31 @@ export default function DatabaseAdmin() {
     setLoading(true);
     axios.get('http://localhost:8000/api/admin/all_data')
       .then(res => { setData(res.data); setLoading(false); })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        // OFFLINE DEMO MODE FOR VERCEL
+        setData({
+          users: [
+            {
+              id: 1, 
+              username: "Demo User", 
+              portfolios_count: 2, 
+              portfolios: [
+                {id: 1, name: "Portfolio #8312", expected_return: 8.5, volatility: 12.0, risk_profile: "Moderate"},
+                {id: 2, name: "Portfolio #4199", expected_return: 10.5, volatility: 15.2, risk_profile: "Aggressive"}
+              ]
+            },
+            {
+              id: 2, 
+              username: "Hackathon Judge", 
+              portfolios_count: 1, 
+              portfolios: [
+                {id: 3, name: "Safe Haven", expected_return: 4.5, volatility: 3.5, risk_profile: "Conservative"}
+              ]
+            }
+          ]
+        });
+        setLoading(false);
+      });
   };
 
   const handleDeleteUser = (userId, username) => {
