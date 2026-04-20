@@ -35,9 +35,7 @@ Basic finance apps use elementary compound interest calculators that draw a fake
 
 ---
 
-## 🚀 Live Demo & How to Test
-
-**Live Vercel Link:** [https://blostem-hackathon-smart-sweep.vercel.app/](https://blostem-hackathon-smart-sweep.vercel.app/)
+## 🚀How to Test
 
 *⚠️ Important Note for Judges:* 
 Because our Machine Learning models and Quant Engine run natively in Python (to avoid external APIs), the backend must be running locally for the Vercel frontend to fetch data. 
