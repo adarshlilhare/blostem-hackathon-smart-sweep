@@ -145,6 +145,13 @@ def get_all_data(db: Session = Depends(get_db)):
         })
     return {"users": result}
 
+@app.delete("/api/admin/clear_data")
+def clear_all_data(db: Session = Depends(get_db)):
+    db.query(models.Portfolio).delete()
+    db.query(models.User).delete()
+    db.commit()
+    return {"message": "Database cleared successfully"}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

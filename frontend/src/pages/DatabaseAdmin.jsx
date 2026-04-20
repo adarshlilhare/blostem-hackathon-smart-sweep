@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Database, RefreshCw, Users, HardDrive } from 'lucide-react';
+import { ArrowLeft, Database, RefreshCw, Users, HardDrive, Trash2 } from 'lucide-react';
 
 export default function DatabaseAdmin() {
   const [data, setData] = useState({ users: [] });
@@ -12,6 +12,15 @@ export default function DatabaseAdmin() {
     axios.get('http://localhost:8000/api/admin/all_data')
       .then(res => { setData(res.data); setLoading(false); })
       .catch(() => setLoading(false));
+  };
+
+  const handleClearDatabase = () => {
+    if (window.confirm("Are you sure you want to clear the entire database? This cannot be undone.")) {
+      setLoading(true);
+      axios.delete('http://localhost:8000/api/admin/clear_data')
+        .then(() => fetchData())
+        .catch(() => setLoading(false));
+    }
   };
 
   useEffect(() => { fetchData(); }, []);
@@ -25,9 +34,14 @@ export default function DatabaseAdmin() {
         <Link to="/" className="text-sm text-gray-400 hover:text-white flex items-center gap-2 transition">
           <ArrowLeft className="w-4 h-4" /> Back to Dashboard
         </Link>
-        <button onClick={fetchData} className="text-sm px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg transition flex items-center gap-2 font-medium">
-          <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} /> Refresh
-        </button>
+        <div className="flex items-center gap-3">
+          <button onClick={handleClearDatabase} className="text-sm px-4 py-2 bg-red-600/10 text-red-500 hover:bg-red-600 hover:text-white rounded-lg transition flex items-center gap-2 font-medium">
+            <Trash2 className="w-4 h-4" /> Clear DB
+          </button>
+          <button onClick={fetchData} className="text-sm px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg transition flex items-center gap-2 font-medium">
+            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} /> Refresh
+          </button>
+        </div>
       </nav>
 
       <div className="max-w-5xl mx-auto px-8 py-10">
