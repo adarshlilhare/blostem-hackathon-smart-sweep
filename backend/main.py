@@ -152,6 +152,12 @@ def delete_specific_user(user_id: int, db: Session = Depends(get_db)):
     db.commit()
     return {"message": "Deleted successfully"}
 
+@app.delete("/api/admin/delete_portfolio/{portfolio_id}")
+def delete_specific_portfolio(portfolio_id: int, db: Session = Depends(get_db)):
+    db.query(models.Portfolio).filter(models.Portfolio.id == portfolio_id).delete()
+    db.commit()
+    return {"message": "Portfolio deleted successfully"}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

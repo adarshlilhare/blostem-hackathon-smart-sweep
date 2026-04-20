@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Database, RefreshCw, Users, HardDrive, Trash2 } from 'lucide-react';
+import { ArrowLeft, Database, RefreshCw, Users, HardDrive, Trash2, X } from 'lucide-react';
 
 export default function DatabaseAdmin() {
   const [data, setData] = useState({ users: [] });
@@ -18,6 +18,15 @@ export default function DatabaseAdmin() {
     if (window.confirm(`Are you sure you want to delete all data for user ${username}?`)) {
       setLoading(true);
       axios.delete(`http://localhost:8000/api/admin/delete/${userId}`)
+        .then(() => fetchData())
+        .catch(() => setLoading(false));
+    }
+  };
+
+  const handleDeletePortfolio = (portfolioId, portfolioName) => {
+    if (window.confirm(`Are you sure you want to delete portfolio: ${portfolioName}?`)) {
+      setLoading(true);
+      axios.delete(`http://localhost:8000/api/admin/delete_portfolio/${portfolioId}`)
         .then(() => fetchData())
         .catch(() => setLoading(false));
     }
@@ -90,13 +99,20 @@ export default function DatabaseAdmin() {
                       {user.portfolios.length === 0 ? (
                         <span className="text-gray-600 text-xs">—</span>
                       ) : (
-                        <div className="space-y-1">
+                        <div className="flex flex-wrap gap-2">
                           {user.portfolios.map(p => (
-                            <div key={p.id} className="text-xs bg-white/5 px-3 py-1.5 rounded inline-flex items-center gap-3 mr-2">
+                            <div key={p.id} className="text-xs bg-white/5 border border-white/5 pl-3 pr-1 py-1.5 rounded inline-flex items-center gap-3 group">
                               <span className="font-medium">{p.name}</span>
                               <span className="text-emerald-400">{p.expected_return}%</span>
                               <span className="text-orange-400">{p.volatility}% vol</span>
-                              <span className="text-gray-500">{p.risk_profile}</span>
+                              <span className="text-gray-500 mr-1">{p.risk_profile}</span>
+                              <button 
+                                onClick={() => handleDeletePortfolio(p.id, p.name)} 
+                                className="p-1 rounded text-gray-500 hover:text-red-400 hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition"
+                                title="Delete this portfolio"
+                              >
+                                <X className="w-3 h-3" />
+                              </button>
                             </div>
                           ))}
                         </div>
