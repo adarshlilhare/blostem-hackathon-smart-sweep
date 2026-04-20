@@ -5,6 +5,16 @@
 
 ---
 
+## 💡 The Hackathon Pitch: Why This Stands Out
+
+**1. Enterprise Asset Allocation, Not Retail Stock Picking**
+Recommending specific "hot" stocks is risky behavior suited for retail day-trading apps. The *Smart Sweep Engine* uses **Modern Portfolio Theory (MPT)**—the rigorous mathematical framework used by Wall Street hedge funds and top-tier managers like Vanguard. It focuses on finding the statistically optimal asset allocation (balancing Tech Equities, Bonds, Gold, etc.) to maximize returns while strictly capping volatility, and then explains *why* it made that choice using AI.
+
+**2. Advanced Monte Carlo Forecasting vs. Linear Math**
+Basic finance apps use elementary compound interest calculators that draw a fake, straight line to the future. The stock market doesn't work that way. Our engine uses a robust **Monte Carlo Simulation Model** that runs thousands of randomized mathematical scenarios based on historical volatility and drift. It aggregates these parallel universes into exact statistical percentiles (95th Best Case, Median, 5th Worst Case) to accurately predict your Financial Independence (FIRE) milestone.
+
+---
+
 ## 🌟 Key Features
 
 1. **Automated Wealth Sweeps**: Tracks current surplus and automatically suggests "sweeping" into an optimal vehicle (e.g., Equities, Bonds, Gold) using Modern Portfolio Theory (MPT) constraints.
