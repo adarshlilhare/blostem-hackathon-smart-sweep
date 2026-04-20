@@ -14,10 +14,10 @@ export default function DatabaseAdmin() {
       .catch(() => setLoading(false));
   };
 
-  const handleClearDatabase = () => {
-    if (window.confirm("Are you sure you want to clear the entire database? This cannot be undone.")) {
+  const handleDeleteUser = (userId, username) => {
+    if (window.confirm(`Are you sure you want to delete all data for user ${username}?`)) {
       setLoading(true);
-      axios.delete('http://localhost:8000/api/admin/clear_data')
+      axios.delete(`http://localhost:8000/api/admin/delete/${userId}`)
         .then(() => fetchData())
         .catch(() => setLoading(false));
     }
@@ -35,9 +35,6 @@ export default function DatabaseAdmin() {
           <ArrowLeft className="w-4 h-4" /> Back to Dashboard
         </Link>
         <div className="flex items-center gap-3">
-          <button onClick={handleClearDatabase} className="text-sm px-4 py-2 bg-red-600/10 text-red-500 hover:bg-red-600 hover:text-white rounded-lg transition flex items-center gap-2 font-medium">
-            <Trash2 className="w-4 h-4" /> Clear DB
-          </button>
           <button onClick={fetchData} className="text-sm px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg transition flex items-center gap-2 font-medium">
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} /> Refresh
           </button>
@@ -80,6 +77,7 @@ export default function DatabaseAdmin() {
                   <th className="px-6 py-3">Username</th>
                   <th className="px-6 py-3">Portfolios</th>
                   <th className="px-6 py-3">Details</th>
+                  <th className="px-6 py-3 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
@@ -103,6 +101,15 @@ export default function DatabaseAdmin() {
                           ))}
                         </div>
                       )}
+                    </td>
+                    <td className="px-6 py-4 text-right">
+                      <button 
+                        onClick={() => handleDeleteUser(user.id, user.username)}
+                        className="p-2 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white rounded transition"
+                        title="Delete User & Portfolios"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
                     </td>
                   </tr>
                 ))}

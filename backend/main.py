@@ -145,12 +145,12 @@ def get_all_data(db: Session = Depends(get_db)):
         })
     return {"users": result}
 
-@app.delete("/api/admin/clear_data")
-def clear_all_data(db: Session = Depends(get_db)):
-    db.query(models.Portfolio).delete()
-    db.query(models.User).delete()
+@app.delete("/api/admin/delete/{user_id}")
+def delete_specific_user(user_id: int, db: Session = Depends(get_db)):
+    db.query(models.Portfolio).filter(models.Portfolio.owner_id == user_id).delete()
+    db.query(models.User).filter(models.User.id == user_id).delete()
     db.commit()
-    return {"message": "Database cleared successfully"}
+    return {"message": "Deleted successfully"}
 
 if __name__ == "__main__":
     import uvicorn
