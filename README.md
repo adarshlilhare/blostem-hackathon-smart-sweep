@@ -7,7 +7,7 @@
 
 ---
 
-## 💡 The Hackathon Pitch: Why This Stands Out
+## 💡 Why This Stands Out
 
 **1. Enterprise Asset Allocation, Not Retail Stock Picking**
 Recommending specific "hot" stocks is risky behavior suited for retail day-trading apps. The *Smart Sweep Engine* uses **Modern Portfolio Theory (MPT)**—the rigorous mathematical framework used by Wall Street hedge funds and top-tier managers like Vanguard. It focuses on finding the statistically optimal asset allocation (balancing Tech Equities, Bonds, Gold, etc.) to maximize returns while strictly capping volatility, and then explains *why* it made that choice using AI.
